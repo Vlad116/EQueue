@@ -1,8 +1,12 @@
 HELP.md
 target/
+uploads/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
+
+### Confidential ###
+confidential.properties
 
 ### STS ###
 .apt_generated
