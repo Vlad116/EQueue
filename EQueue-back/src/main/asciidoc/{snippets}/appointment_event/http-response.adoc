@@ -1,0 +1,25 @@
+[source,http,options="nowrap"]
+----
+HTTP/1.1 200 OK
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Content-Type: application/hal+json
+Content-Length: 364
+
+{
+  "eventLineNumber" : 1,
+  "title" : "Covid test 10:00",
+  "eventDescription" : "Test on 'corona'",
+  "eventStartTime" : null,
+  "recordingIsAvailableUntil" : null,
+  "averageDuration" : 15,
+  "realDuration" : 9,
+  "state" : "NotAssigned",
+  "_links" : {
+    "appointment" : {
+      "href" : "http://localhost:8080/events/1/appointment"
+    }
+  }
+}
+----

@@ -1,0 +1,10 @@
+|===
+|Relation|Description
+
+|`+appointment+`
+|Appointment this event
+
+|`+self+`
+|This event
+
+|===

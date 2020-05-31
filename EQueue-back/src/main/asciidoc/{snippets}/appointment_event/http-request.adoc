@@ -1,0 +1,4 @@
+[source,bash]
+----
+$ http PUT 'http://localhost:8080/events/1/appointment'
+----

@@ -1,0 +1,28 @@
+= Описание API записи на прием
+
+== Методы
+
+|===
+|Метод | Назначение
+|`PUT`
+|Обновить сущность или ее состояние
+|===
+
+=== Запись на прием
+
+Можно записаться на прием в какую-либо организацию (любое гос. учереждение), если статус записи *NOT ASSIGNED*
+
+.request
+
+include::{snippets}/appointment_event/http-request.adoc[]
+
+.response
+include::{snippets}/appointment_event/http-response.adoc[]
+
+.response-fields
+
+include::{snippets}/appointment_event/response-fields.adoc[]
+
+.links
+
+include::{snippets}/appointment_event/links.adoc[]

@@ -1,0 +1,40 @@
+|===
+|Path|Type|Description
+
+|`+title+`
+|`+String+`
+|Название мероприятия
+
+|`+eventDescription+`
+|`+String+`
+|Описание мероприятия
+
+|`+state+`
+|`+String+`
+|Состояние записи
+
+|`+eventLineNumber+`
+|`+Number+`
+|Номер в очереди
+
+|`+averageDuration+`
+|`+Number+`
+|Ожидаемая продолжительность приема
+
+|`+realDuration+`
+|`+Number+`
+|Реальная продолжительность приема
+
+|`+eventStartTime+`
+|`+Null+`
+|Время приема (начало)
+
+|`+recordingIsAvailableUntil+`
+|`+Null+`
+|До какого времени место в очереди доступно для записи
+
+|`+_links.appointment.href+`
+|`+String+`
+|To event appointment link
+
+|===
