@@ -10,13 +10,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class TokenDto {
-  private String value;
-  private Long userId;
+    private String value;
+    private Long userId;
 
-  public static TokenDto from(String token, Long id) {
-    return TokenDto.builder()
-            .userId(id)
-            .value(token)
-            .build();
-  }
+    public static TokenDto from(String token, Long id) {
+        return TokenDto.builder()
+                .userId(id)
+                .value(token)
+                .build();
+    }
 }

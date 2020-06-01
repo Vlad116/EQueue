@@ -24,23 +24,22 @@ public class EventsController {
         );
     }
 
+    @RequestMapping(value = "/events/{event-id}/delete", method = RequestMethod.DELETE)
+    public @ResponseBody
+    ResponseEntity<?> delete(@PathVariable("event-id") Long eventId) {
+        return ResponseEntity.ok(
+                new EntityModel<>(
+                        eventsService.delete(eventId)
+                )
+        );
+    }
+
 //    @RequestMapping(value = "/events/{event-id}/appointment/{user-id}", method = RequestMethod.PUT)
 //    public @ResponseBody
 //    ResponseEntity<?> appointment(@PathVariable("event-id") Long eventId, @PathVariable("user-id") Long userId) {
 //        return ResponseEntity.ok(
 //                new EntityModel<>(
 //                        eventsService.appointmentToUser(eventId, userId)
-//                )
-//        );
-//    }
-
-
-//    @RequestMapping(value = "/events/{event-id}/delete", method = RequestMethod.DELETE)
-//    public @ResponseBody
-//    ResponseEntity<?> delete(@PathVariable("event-id") Long eventId) {
-//        return ResponseEntity.ok(
-//                new EntityModel<>(
-//                        eventsService.appointment(eventId)
 //                )
 //        );
 //    }

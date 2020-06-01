@@ -30,6 +30,7 @@ public class EventsRepresentationProcessor implements RepresentationModelProcess
         if (event != null && event.getState().equals(State.ASSIGNED)) {
             model.add(links.linkToItemResource(Event.class, event.getId()).withRel("delete"));
         }
+
         return model;
     }
 }

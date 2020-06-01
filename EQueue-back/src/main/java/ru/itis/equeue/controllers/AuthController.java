@@ -26,7 +26,7 @@ public class AuthController {
         try {
             userService.registration(userDto);
             return ResponseEntity.ok().build();
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         }
     }

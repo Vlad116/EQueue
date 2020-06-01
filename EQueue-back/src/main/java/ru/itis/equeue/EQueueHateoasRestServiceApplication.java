@@ -35,7 +35,7 @@ import static java.util.Arrays.asList;
 public class EQueueHateoasRestServiceApplication {
 
     @Bean
-    public RestTemplate restTemplate(){
+    public RestTemplate restTemplate() {
         return new RestTemplate();
     }
 
@@ -61,12 +61,11 @@ public class EQueueHateoasRestServiceApplication {
         companiesRepository.save(clinic);
 
 
-
         GregorianCalendar gCalendarStartTime = new GregorianCalendar();
-        gCalendarStartTime.set(2020, Calendar.MARCH, 28, 10,0,0);
+        gCalendarStartTime.set(2020, Calendar.MARCH, 28, 10, 0, 0);
 
         GregorianCalendar gCalendarRecordingIsAvailableUntil = new GregorianCalendar();
-        gCalendarRecordingIsAvailableUntil.set(2020, Calendar.MARCH, 28, 8,30,0);
+        gCalendarRecordingIsAvailableUntil.set(2020, Calendar.MARCH, 28, 8, 30, 0);
 
         gCalendarStartTime.setTimeZone(TimeZone.getTimeZone("GMT+3:00"));
         gCalendarRecordingIsAvailableUntil.setTimeZone(TimeZone.getTimeZone("GMT+3:00"));
@@ -92,7 +91,7 @@ public class EQueueHateoasRestServiceApplication {
                 .build();
 
         gCalendarStartTime.set(2020, Calendar.MARCH, 28, 12, 0, 0);
-        gCalendarRecordingIsAvailableUntil.set(2020, Calendar.MARCH, 28, 10,30,0);
+        gCalendarRecordingIsAvailableUntil.set(2020, Calendar.MARCH, 28, 10, 30, 0);
 
         System.out.println("New: " + new Timestamp(gCalendarStartTime.getTimeInMillis()));
 
@@ -108,7 +107,7 @@ public class EQueueHateoasRestServiceApplication {
                 .build();
 
         gCalendarStartTime.set(2020, Calendar.MARCH, 28, 14, 0, 0);
-        gCalendarRecordingIsAvailableUntil.set(2020, Calendar.MARCH, 28, 12,30,0);
+        gCalendarRecordingIsAvailableUntil.set(2020, Calendar.MARCH, 28, 12, 30, 0);
 
         Event thirdCOVIDTest = Event.builder()
                 .title("Covid test 14:00")
@@ -122,7 +121,7 @@ public class EQueueHateoasRestServiceApplication {
                 .build();
 
         gCalendarStartTime.set(2020, Calendar.APRIL, 1, 8, 0, 0);
-        gCalendarRecordingIsAvailableUntil.set(2020, Calendar.MARCH, 31, 24,0,0);
+        gCalendarRecordingIsAvailableUntil.set(2020, Calendar.MARCH, 31, 24, 0, 0);
 
         Event firstFLUETest = Event.builder()
                 .title("Flu shot")
@@ -154,7 +153,7 @@ public class EQueueHateoasRestServiceApplication {
                 covidTestShedule, flue
         ));
 
-        clinic.setShedules(asList(covidTestShedule,flue));
+        clinic.setShedules(asList(covidTestShedule, flue));
 
         covidTestShedule.setCompany(clinic);
         flue.setCompany(clinic);
@@ -166,50 +165,37 @@ public class EQueueHateoasRestServiceApplication {
 
         firstFLUETest.setShedule(flue);
 
-        eventsRepository.saveAll(asList(firstCOVIDTest,secondCOVIDTest,thirdCOVIDTest,firstFLUETest));
+        eventsRepository.saveAll(asList(firstCOVIDTest, secondCOVIDTest, thirdCOVIDTest, firstFLUETest));
 
         covidTestShedule.setEvents(asList(firstCOVIDTest,
-                        secondCOVIDTest,
-                        thirdCOVIDTest));
+                secondCOVIDTest,
+                thirdCOVIDTest));
 
         covidTestShedule.setEvents(Collections.singletonList(firstFLUETest));
 
         shedulesRepository.saveAll(asList(
                 covidTestShedule, flue
         ));
-//
-//        User daria = User.builder()
-//                .firstName("Дария")
-//                .lastName("Шагиева")
-//                .role("CREATOR")
-//                .email("daria99@gmail.com")
-//                .phoneNumber("89541124876")
-//                .hashPassword("hashpasswordsome")
-//                .events(Collections.singletonList(firstFLUETest))
-//                .build();
-//
+
         User vlad = User.builder()
-//                .id(176L)
-                .firstName("Alekseev")
-                .lastName("Vladislav")
-                .email("vlad-padovan@mail.ru")
-                .login("Vlad116")
+                .firstName("Vladislav")
+                .lastName("Alekseev")
+                .email("vladalekseev9@yandex.ru")
+                .login("Vlad16")
                 .phoneNumber("89543322876")
                 .hashPassword("pswd123")
-                .events(asList(firstFLUETest,secondCOVIDTest))
+                .events(asList(firstFLUETest, secondCOVIDTest))
                 .build();
+
 
 //        Optional<User> vlad = usersRepository.findUserById(192L);
 //        Optional<User> daria = usersRepository.findUserById(337L);
 //        UserDto testuser = UserDto.from(vlad.get());
 //        UserDto testuser2 = UserDto.from(daria.get());
-//
-//        usersRepository.saveAll(asList(emilka.get(), daria.get()));
 
-//        usersService.registration(UserDto.from(vlad));
-//        System.out.println(firstFLUETest.getId());
+        usersService.registration(UserDto.from(vlad));
 
-        Long userIdForTestAppointment = usersRepository.getByEmailIgnoreCase("vlad-padovan@mail.ru").get().getId();
+        Long userIdForTestAppointment = usersRepository.getByEmailIgnoreCase("vladalekseev9@yandex.ru").get().getId();
 
         eventsService.appointmentToUser(firstFLUETest.getId(), userIdForTestAppointment);
         eventsService.appointmentToUser(firstCOVIDTest.getId(), userIdForTestAppointment);

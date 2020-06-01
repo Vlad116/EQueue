@@ -43,7 +43,7 @@ public class JwtHelper {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().get("login", String.class);
     }
 
-    public String getUserId(String token){
+    public String getUserId(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
 

@@ -18,7 +18,7 @@ public class CompaniesFluxServiceImpl implements CompaniesFluxService {
 
     @Override
     public Flux<CompaniesData> getAll() {
-        List<Flux<CompaniesData>> fluxes =  clients.stream().map(this::getAll).collect(Collectors.toList());
+        List<Flux<CompaniesData>> fluxes = clients.stream().map(this::getAll).collect(Collectors.toList());
         return Flux.merge(fluxes);
     }
 

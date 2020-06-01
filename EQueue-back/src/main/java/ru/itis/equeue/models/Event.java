@@ -47,4 +47,12 @@ public class Event {
         }
     }
 
+    public void delete() {
+        if (this.state.equals(State.ASSIGNED)) {
+            this.state = State.CANCELED;
+        } else if (this.state.equals(State.FINISHED)) {
+            throw new IllegalStateException();
+        }
+    }
+
 }

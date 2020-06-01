@@ -15,7 +15,6 @@ import ru.itis.equeue.repositories.UsersRepository;
 
 import java.time.format.DateTimeFormatter;
 
-
 @Service
 @PropertySource("classpath:smtp.properties")
 public class EmailServiceImpl implements EmailService {
@@ -43,7 +42,7 @@ public class EmailServiceImpl implements EmailService {
         MimeMessagePreparator messagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setFrom(mailFrom);
-            messageHelper.setTo("vlad-padovan@mail.ru");
+            messageHelper.setTo(email);
             messageHelper.setSubject(subject);
             messageHelper.setText(text, true);
         };
@@ -56,10 +55,9 @@ public class EmailServiceImpl implements EmailService {
     public void confirmRegistration(Long id) {
         User user = usersRepository.findUserById(id).get();
         String appeal = HEADER.replaceFirst("firstname", user.getFirstName());
-        String text = appeal + "<a href='http://localhost:81/confirm/" +
+        String text = appeal + "<a href='http://localhost:8000/confirm/" +
                 user.getConfirmString() + "'>" + "пройдите по ссылке" + "</a>"
                 + FOOTER;
-
         sendMail("Подтвреждение регистрации на сервисе Equeue", text, user.getEmail());
     }
 
@@ -71,8 +69,9 @@ public class EmailServiceImpl implements EmailService {
     @Override
     public void notification(String eventIdPlusUserId) {
 
-        Long eventId = Long.parseLong(eventIdPlusUserId.split(" ", 2)[0]);
-        Long userId = Long.parseLong(eventIdPlusUserId.split(" ", 2)[1]);
+        String[] data = eventIdPlusUserId.split(" ", 2);
+        Long eventId = Long.parseLong(data[0]);
+        Long userId = Long.parseLong(data[1]);
 
         System.out.println(userId);
         System.out.println(eventId);
@@ -84,13 +83,13 @@ public class EmailServiceImpl implements EmailService {
         System.out.println(event.getTitle());
 
         // Custom format
-       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         // Format LocalDateTime
         String formattedDateTime = event.getEventStartTime().format(formatter);
 
         String appeal = HEADER_NOTIFICATION.replaceFirst("firstname", user.getFirstName()).replaceFirst("..:..", formattedDateTime);
 
-        String text = appeal + "<a href='http://localhost:81/events'>"
+        String text = appeal + "<a href='http://localhost:8000/events'>"
                 + " Пройдите по ссылке для перехода в профиль и просмотра текущих записей"
                 + "</a>" + FOOTER_NOTIFICATION;
         sendMail("Напоминание о записи на " + event.getTitle() + " в " + formattedDateTime + "!", text, user.getEmail());

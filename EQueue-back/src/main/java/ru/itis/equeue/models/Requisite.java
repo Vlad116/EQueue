@@ -13,6 +13,8 @@ import javax.persistence.*;
 @Table(name = "company_requisites")
 public class Requisite {
 
+    // Реквизиты счета
+
     @Id
     @GeneratedValue
     Long id;
@@ -21,17 +23,16 @@ public class Requisite {
     @JoinColumn(name = "company_id")
     private Company company;
 
-// Адрес регистрации
+    // Адрес регистрации
     String legalAddress;
-// Фактический адрес
+    // Фактический адрес
     String actualAddress;
-// ИНН
+    // ИНН
     String TIN;
-// КПП
+    // КПП
     String KPP;
-// ОГ
+    // ОГ
     String PSRN;
-// ОКВЭД - основной вид деятельности (код)
+    // ОКВЭД - основной вид деятельности (код)
     String OKVED;
-// Реквизиты счета
 }

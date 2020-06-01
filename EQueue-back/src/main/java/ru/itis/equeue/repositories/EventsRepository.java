@@ -25,6 +25,7 @@ public interface EventsRepository extends PagingAndSortingRepository<Event, Long
     Optional<Event> findEventById(Long id);
 
     List<Event> findAllByTitle(String title);
+
     Event findByEventLineNumber(Integer eventLineNumber);
 
 }

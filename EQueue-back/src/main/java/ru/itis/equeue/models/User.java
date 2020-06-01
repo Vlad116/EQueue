@@ -1,11 +1,11 @@
 package ru.itis.equeue.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
-import ru.itis.equeue.security.role.Role;
+        import com.fasterxml.jackson.annotation.JsonIgnore;
+        import lombok.*;
+        import ru.itis.equeue.security.role.Role;
 
-import javax.persistence.*;
-import java.util.List;
+        import javax.persistence.*;
+        import java.util.List;
 
 @Builder
 @EqualsAndHashCode
@@ -31,6 +31,7 @@ public class User {
     private String email;
     private String login;
     private String phoneNumber;
+    private String pathToAvatar;
     private String hashPassword;
 
     @Enumerated(value = EnumType.STRING)

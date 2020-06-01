@@ -8,7 +8,10 @@ import ru.itis.equeue.models.Event;
 
 public interface UsersService {
     TokenDto login(LoginDto loginDto);
+
     void registration(UserDto user);
+
+    void addAvatar(String info);
 
 //    void addEvent(Long userId, Event event);
 //    void update(ProfileForm profileForm, Authentication authentication);

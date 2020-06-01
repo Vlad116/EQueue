@@ -21,7 +21,7 @@ public class ConfirmController {
         try {
             confirmService.confirm(confirmString);
             return ResponseEntity.ok("Successful email confirmation");
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body("Confirmation error");
         }
     }

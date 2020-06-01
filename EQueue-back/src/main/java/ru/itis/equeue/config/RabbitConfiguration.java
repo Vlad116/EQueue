@@ -32,16 +32,28 @@ public class RabbitConfiguration {
         return new RabbitTemplate(connectionFactory());
     }
 
-//    Обьявляем очередь для подтверждений регистрации
+    //    Обьявляем очередь для подтверждений регистрации
     @Bean
     public Queue confirm_registration() {
         return new Queue("confirm_registration");
     }
 
-//    Обьявляем очередь для напоминаний о записи
+    //    Обьявляем очередь для напоминаний о записи
     @Bean
     public Queue notification() {
         return new Queue("event_notification");
+    }
+
+    //    Обьявляем очередь для загрузки документов
+    @Bean
+    public Queue document_upload() {
+        return new Queue("document_upload");
+    }
+
+    //    Обьявляем очередь для загрузки аватара
+    @Bean
+    public Queue avatar_upload() {
+        return new Queue("avatar_upload");
     }
 
 }

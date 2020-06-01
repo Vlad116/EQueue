@@ -46,8 +46,16 @@ public class EventsServiceImpl implements EventsService {
     }
 
     @Override
+    public Event delete(Long eventId) {
+        Event event = eventsRepository.findById(eventId).orElseThrow(IllegalArgumentException::new);
+        event.delete();
+        eventsRepository.save(event);
+        return event;
+    }
+
+    @Override
     public void notification(Long eventId, Long userId) {
-        amqpTemplate.convertAndSend("event_notification",eventId + " " + userId);
+        amqpTemplate.convertAndSend("event_notification", eventId + " " + userId);
     }
 
 

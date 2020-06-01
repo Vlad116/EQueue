@@ -1,6 +1,7 @@
 package ru.itis.equeue.services;
 
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -83,6 +84,22 @@ public class UsersServiceImpl implements UsersService {
             }
         }
         throw new IllegalArgumentException("Login attempt failed");
+    }
+
+    @RabbitListener(queues = "avatar_upload")
+    @Override
+    public void addAvatar(String info) {
+        System.out.println("Recieve avatar in DocumentService: " + info);
+        // documentName + " " + documentType + " " + pathToFile - format
+        String[] idAndPath = info.split(" ");
+
+        Long userId = Long.parseLong(idAndPath[0]);
+        String pathToFile = idAndPath[1];
+
+        User user = usersRepository.findUserById(userId).get();
+        user.setPathToAvatar(pathToFile);
+        usersRepository.save(user);
+        System.out.println("User update avatar");
     }
 
 //    @Override

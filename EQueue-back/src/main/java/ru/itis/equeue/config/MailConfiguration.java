@@ -11,7 +11,6 @@ import javax.annotation.Resource;
 import java.util.Objects;
 import java.util.Properties;
 
-
 @Configuration
 @PropertySource("classpath:smtp.properties")
 public class MailConfiguration {

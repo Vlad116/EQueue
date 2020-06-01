@@ -44,10 +44,10 @@ public class JwtTokenAuthenticationProvider implements AuthenticationProvider {
         }
 
         UserDetailsImpl userDetails = (UserDetailsImpl) userDetailsService.loadUserByUsername(body.get("login").toString());
-        if (userDetails != null){
+        if (userDetails != null) {
             tokenAuthentication.setUserDetails(userDetails);
             tokenAuthentication.setAuthenticated(true);
-        }else {
+        } else {
             throw new BadCredentialsException("Incorrect Token");
         }
 

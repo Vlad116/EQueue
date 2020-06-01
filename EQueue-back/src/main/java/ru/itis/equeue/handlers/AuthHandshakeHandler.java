@@ -26,7 +26,7 @@ public class AuthHandshakeHandler implements HandshakeHandler {
 
     @Override
     public boolean doHandshake(ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse, WebSocketHandler webSocketHandler, Map<String, Object> map) throws HandshakeFailureException {
-        ServletServerHttpRequest request = (ServletServerHttpRequest)serverHttpRequest;
+        ServletServerHttpRequest request = (ServletServerHttpRequest) serverHttpRequest;
         Cookie cookie = WebUtils.getCookie(request.getServletRequest(), "AUTH");
         String token = "";
         if (cookie != null) {

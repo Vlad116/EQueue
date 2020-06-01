@@ -18,9 +18,10 @@ public class UserDto {
     private String lastName;
     private String firstName;
     private String phoneNumber;
+    private String pathToAvatar;
     private String address;
 
-    public static UserDto from(User user){
+    public static UserDto from(User user) {
         return UserDto.builder()
                 .id(user.getId())
                 .firstName(user.getFirstName())
@@ -29,6 +30,7 @@ public class UserDto {
                 .login(user.getLogin())
                 .email(user.getEmail())
                 .phoneNumber(user.getPhoneNumber())
+                .pathToAvatar(user.getPathToAvatar())
                 .build();
     }
 }

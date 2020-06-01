@@ -4,6 +4,10 @@ import ru.itis.equeue.models.Event;
 
 public interface EventsService {
     Event appointment(Long eventId);
+
+    Event delete(Long eventId);
+
     void appointmentToUser(Long eventId, Long userId);
+
     void notification(Long eventId, Long userId);
 }
